@@ -1,24 +1,29 @@
-var ReactTkWindowServer = require('./ReactTkWindowServer');
+'use strict';
 
-ReactTkWindowServer.sendCommand({
-  type: 'create',
-  key: 'myLabel',
-  widgetType: 'Label',
-});
+var React = require('react');
 
-ReactTkWindowServer.sendCommand({
-  type: 'configure',
-  key: 'myLabel',
-  properties: {
-    text: 'Hello world',
+var render = require('./render');
+
+//<label text="hello world" grid={{row: 0, column: 0}} />
+
+var App = React.createClass({
+  getInitialState: function() {
+    setTimeout(function() {
+      this.setState({text: 'goodbye world'});
+    }.bind(this), 1000);
+
+    return {text: 'hello world'};
+  },
+
+  render: function() {
+    return React.createElement('label', {
+      text: this.state.text,
+      grid: {
+        row: 0,
+        column: 0,
+      },
+    });
   },
 });
 
-ReactTkWindowServer.sendCommand({
-  type: 'grid',
-  key: 'myLabel',
-  properties: {
-    row: 0,
-    column: 0,
-  },
-});
+render(React.createElement(App));

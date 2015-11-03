@@ -27,25 +27,29 @@ assign(ReactTkComponent.prototype, {
       widgetType: widgetType,
       key: id,
     });
-    var props = assign({}, this._currentElement.props);
+    this.receiveComponent(this._currentElement, transaction, context);
+  },
+
+  receiveComponent: function(nextElement, transaction, context) {
+    var props = assign({}, nextElement.props);
     ReactTkWindowServer.sendCommand({
       type: 'grid',
-      key: id,
+      key: this._rootNodeID,
       properties: props.grid,
     });
+    delete props.grid;
     ReactTkWindowServer.sendCommand({
       type: 'configure',
-      key: id,
+      key: this._rootNodeID,
       properties: props,
     });
   },
 
-  receiveComponent: function(nextElement, transaction, context) {
-    //
-  },
-
   unmountComponent: function() {
-    //
+    ReactTkWindowServer.sendCommand({
+      type: 'delete',
+      key: this._rootNodeID,
+    });
   },
 
   getPublicInstance: function() {

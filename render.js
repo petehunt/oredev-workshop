@@ -1,9 +1,12 @@
 'use strict';
 
 var ReactInstanceHandles = require('react/lib/ReactInstanceHandles');
+var ReactTkInjection = require('./ReactTkInjection');
 var ReactUpdates = require('react/lib/ReactUpdates');
 
 var instantiateReactComponent = require('react/lib/instantiateReactComponent');
+
+ReactTkInjection.inject();
 
 function render(element) {
   var id = ReactInstanceHandles.createReactRootID();
