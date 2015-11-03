@@ -8,6 +8,9 @@
   },
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "babel": "^5.8.3"
+  },
   "dependencies": {
     "react": "^0.14.2"
   }

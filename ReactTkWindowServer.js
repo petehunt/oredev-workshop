@@ -22,7 +22,6 @@ var ReactTkWindowServer = {
   events: new EventEmitter(),
 
   sendCommand: function(command) {
-    console.log('SENDING: ', command);
     p.stdin.write(JSON.stringify(command) + '\n');
   },
 };
