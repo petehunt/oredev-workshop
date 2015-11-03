@@ -1,0 +1,9 @@
+{"type": "create", "widgetType": "Label", "key": "myLabel"}
+{"type": "configure", "key": "myLabel", "properties": {"text": "Hello world"}}
+{"type": "grid", "key": "myLabel", "properties": {"row": 0, "column": 0}}
+
+{"type": "create", "widgetType": "Button", "key": "myButton"}
+{"type": "configure", "key": "myButton", "properties": {"text": "Click me!"}}
+{"type": "grid", "key": "myButton", "properties": {"row": 1, "column": 0}}
+
+{"type": "listen", "key": "myButton", "eventSelector": "<Button-1>"}
