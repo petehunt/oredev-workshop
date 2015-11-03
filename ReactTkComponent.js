@@ -47,6 +47,15 @@ assign(ReactTkComponent.prototype, ReactMultiChild.Mixin, {
         properties: props.grid,
       });
       delete props.grid;
+
+      if (props.onClick) {
+        ReactTkWindowServer.sendCommand({
+          type: 'listen',
+          key: this._rootNodeID,
+          eventSelector: '<Button-1>',
+        });
+      }
+
       ReactTkWindowServer.sendCommand({
         type: 'configure',
         key: this._rootNodeID,
